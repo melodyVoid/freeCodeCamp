@@ -68,3 +68,92 @@ function titleCase(str) {
 
 titleCase("I'm a little tea pot");
 ```
+
+# 2018-04-13
+
+## 6.返回二维数组中每一个数组中的最大值为一个新数组
+
+```js
+// 返回二维数组中每一个数组中的最大值为一个新数组
+function largestOfFour(arr) {
+  return arr.map(item => Math.max(...item));
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+```
+
+## 7. 用 ES5 的方式实现 ES6 的 `.endsWith()`
+
+```js
+// 用 ES5 的方式实现 ES6 的 .endsWith()
+function confirmEnding(str, target) {
+  return str.substr(-target.length) === target;
+}
+
+confirmEnding("Bastian", "n");
+```
+
+## 8.repeat 字符串
+
+```js
+// repeat 字符串
+function repeatStringNumTimes(str, num) {
+  if (num <= 0) return '';  // num 为 0 或负数时也要考虑到
+  return str.repeat(num);
+}
+
+repeatStringNumTimes("abc", 3);
+```
+
+## 9. 缩短字符串，如果字符串的长度大于第二个参数num，返回缩短后的字符串（以 … 结尾）；如果给定的最大字符串长度小于或等于3，则在确定缩短字符串时，添加三个点不会增加字符串长度。
+
+```js
+// 测试用例
+truncateString("A-tisket a-tasket A green and yellow basket", 11)
+should return "A-tisket...".
+
+truncateString("Peter Piper picked a peck of pickled peppers", 14) 
+should return "Peter Piper...".
+
+truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length) 
+should return "A-tisket a-tasket A green and yellow basket".
+
+truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length + 2) 
+should return "A-tisket a-tasket A green and yellow basket".
+
+truncateString("A-", 1) 
+should return "A...".
+
+truncateString("Absolutely Longer", 2) 
+should return "Ab...".
+```
+
+```js
+//  缩短字符串，如果字符串的长度大于第二个参数num，返回缩短后的字符串（以 … 结尾）；如果给定的最大字符串长度小于或等于3，则在确定缩短字符串时，添加三个点不会增加字符串长度。
+function truncateString(str, num) {
+  const strLength = str.length;
+  if (strLength > num) {
+    return str.substr(0, num > 3 ? num -3 : num) + '...';
+  } else {
+    return num > 3 ? str : str.substr(0, num) + '...';
+  }
+}
+
+truncateString("Absolutely Longer", 2);
+```
+
+## 10. 按照给定的`size`将一个数组切分成含有`size`个数的更小数组块的数组
+
+```js
+// 按照给定的size将一个数组切分成含有size个数的更小数组块的数组
+function chunkArrayInGroups(arr, size) {
+ return Array.from({ length: Math.ceil(arr.length / size)}, (item, index) => {
+   return arr.slice(index * size, index * size + size);
+ });
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+```
+
+
+
