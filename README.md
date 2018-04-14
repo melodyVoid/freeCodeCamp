@@ -155,5 +155,64 @@ function chunkArrayInGroups(arr, size) {
 chunkArrayInGroups(["a", "b", "c", "d"], 2);
 ```
 
+# 2018-04-14
 
+## 11.切断数组的指定元素个数，返回切点之后的数组
+
+```js
+// 切断数组的指定元素个数，返回切点之后的数组
+function slasher(arr, howMany) {
+  return arr.slice(howMany);
+}
+
+slasher([1, 2, 3], 2);
+```
+
+## 12. 如果数组的第一个元素包含第二个元素的所有字母，返回 true, 否则返回 false。（忽略顺序和大小写）
+
+```js
+// 如果数组的第一个元素包含第二个元素的所有字母，返回 true, 否则返回 false。（忽略顺序和大小写）
+function mutation(arr) {
+  const [string, test] = arr.map(item => item.toLowerCase());
+  return [...test].every(item => string.includes(item));
+}
+
+mutation(["hello", "hey"]);
+```
+
+## 13. 移除数组中的 falsy 元素
+
+```js
+// 移除数组中的 falsy 元素
+function bouncer(arr) {
+  return arr.filter(item => item);
+}
+
+bouncer([7, "ate", "", false, 9]);
+```
+
+## 14. 一个初始数组，后面跟着一个或多个参数，从初始数组中删除与这些参数具有相同值的所有元素。
+
+```js
+// 一个初始数组，后面跟着一个或多个参数，从初始数组中删除与这些参数具有相同值的所有元素
+function destroyer(arr, ...rest) {
+  rest.forEach((item, index) => {
+    arr = arr.filter(i => i !== item);
+  });
+  return arr;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+```
+
+## 15. 第一个参数是数组，第二个参数是一个数字，找到数组排序后，该数字应该在的位置（索引）。例如，`getIndexToIns([1,2,3,4], 1.5)`应该返回 `1` 因为它大于`1`（索引0），但小于`2`（索引1）。
+
+```js
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+  return [...arr, num].sort((a, b) => a - b).indexOf(num);
+}
+
+getIndexToIns([40, 60], 50);
+```
 
