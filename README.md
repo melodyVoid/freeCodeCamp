@@ -216,3 +216,20 @@ function getIndexToIns(arr, num) {
 getIndexToIns([40, 60], 50);
 ```
 
+# 2018-04-15
+
+## 16.凯撒密码
+
+```js
+// 大写字母向后移 13 位
+function rot13(str) { // LBH QVQ VG!
+  const code = str.replace(/[A-Z]/g, item => {
+    return String.fromCharCode(item.charCodeAt() + 13 > 90 ? item.charCodeAt() + 13 - 90 + 64 : item.charCodeAt() + 13);
+  });
+  return code;
+}
+
+rot13("SERR PBQR PNZC");
+```
+
+初级算法题完成。
